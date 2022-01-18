@@ -1,6 +1,6 @@
-package ru.cource.task1.range_main;
+package ru.course.tarasova.range_main;
 
-import ru.cource.task1.range.Range;
+import ru.course.tarasova.range.Range;
 
 import java.util.Scanner;
 
@@ -19,8 +19,7 @@ public class Main {
 
         Range range = new Range(from, to);
 
-        System.out.println("Длина диапазона: " + range.GetLength(from, to));
+        System.out.println("Длина диапазона: " + range.getLength());
         System.out.println("Принадлежит ли число диапазону: " + range.isInside(number));
-
     }
 }

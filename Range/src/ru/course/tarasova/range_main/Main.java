@@ -31,10 +31,8 @@ public class Main {
         System.out.println("Длина первого диапазона: " + secondInterval.getLength());
         System.out.println("Принадлежит ли число первому диапазону: " + firstInterval.isInside(number));
         System.out.println("Принадлежит ли число второму диапазону: " + secondInterval.isInside(number));
-
         System.out.println("Интервал-пересечения двух диапазонов: " + firstInterval.getIntersectionInterval(secondInterval));
-        System.out.println("Объединение двух диапазонов: " + Arrays.toString(firstInterval.getUnion(secondInterval)));
+        System.out.println("Объединение двух диапазонов: " + Arrays.toString((firstInterval.getUnion(secondInterval))));
         System.out.println("Разность двух диапазонов: " + Arrays.toString(firstInterval.getDifference(secondInterval)));
-
     }
 }

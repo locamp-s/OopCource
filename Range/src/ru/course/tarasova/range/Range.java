@@ -33,38 +33,49 @@ public class Range {
         return number >= from && number <= to;
     }
 
-    public Range getIntersectionInterval(Range secondInterval) {
-        if ((secondInterval.from > to) || (from > secondInterval.to)) {
+    public Range getIntersectionRange(Range range) {
+        if ((range.from >= to) || (from >= range.to)) {
             return null;
         }
-        return new Range(Math.max(from, secondInterval.from), Math.min(to, secondInterval.to));
+
+        return new Range(Math.max(from, range.from), Math.min(to, range.to));
     }
 
-    public Range[] getUnion(Range secondInterval) {
-        if (to < secondInterval.from) {
-            return new Range[]{new Range(secondInterval.from, to)};
-        } else if (from > secondInterval.to) {
-            return new Range[]{new Range(secondInterval.from, secondInterval.to), new Range(from, to)};
-        } else {
-            return new Range[]{new Range(Math.min(from, secondInterval.from), Math.max(to, secondInterval.to))};
+    public Range[] getUnion(Range range) {
+        if (to < range.from) {
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
+
+        if (from > range.to) {
+            return new Range[]{new Range(range.from, range.to), new Range(from, to)};
+        }
+
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
+
     }
 
-    public Range[] getDifference(Range secondInterval) {
-        if ((to < secondInterval.from) || (secondInterval.to < from)) {
+    public Range[] getDifference(Range range) {
+        if ((to < range.from) || (range.to < from)) {
             return new Range[]{new Range(from, to)};
-        } else if (from < secondInterval.from) {
-            if (to > secondInterval.to) {
-                return new Range[]{new Range(from, secondInterval.from), new Range(secondInterval.to, to)};
-            } else {
-                return new Range[]{new Range(from, secondInterval.from)};
-            }
-        } else {
-            if (to > secondInterval.to) {
-                return new Range[]{new Range(secondInterval.to, to)};
-            } else {
-                return new Range[]{};
-            }
         }
+
+        if (from < range.from) {
+            if (to > range.to) {
+                return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+            }
+
+            return new Range[]{new Range(from, range.from)};
+        } else {
+            if (to > range.to) {
+                return new Range[]{new Range(range.to, to)};
+            }
+
+            return new Range[]{};
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "(" + from + "; " + to + ")";
     }
 }

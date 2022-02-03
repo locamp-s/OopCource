@@ -33,7 +33,7 @@ public class Range {
         return number >= from && number <= to;
     }
 
-    public Range getIntersectionRange(Range range) {
+    public Range getIntersection(Range range) {
         if ((range.from >= to) || (from >= range.to)) {
             return null;
         }
@@ -51,7 +51,6 @@ public class Range {
         }
 
         return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
-
     }
 
     public Range[] getDifference(Range range) {
@@ -65,13 +64,13 @@ public class Range {
             }
 
             return new Range[]{new Range(from, range.from)};
-        } else {
-            if (to > range.to) {
-                return new Range[]{new Range(range.to, to)};
-            }
-
-            return new Range[]{};
         }
+
+        if (to > range.to) {
+            return new Range[]{new Range(range.to, to)};
+        }
+
+        return new Range[]{};
     }
 
     @Override

@@ -1,7 +1,6 @@
 package ru.course.tarasova.shape;
 
 public class Triangle implements Shape {
-    private static final double EPSILON = 1.0e-10;
     private double x1;
     private double y1;
     private double x2;
@@ -64,5 +63,37 @@ public class Triangle implements Shape {
         double c = Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
 
         return a + b + c;
+    }
+
+    @Override
+    public String toString() {
+        return "треугольник с координатами: " + "x1=" + x1 + ", y1=" + y1 + ", x2=" + x2 + ", y2=" + y2
+                + ", x3=" + x3 + ", y3=" + y3;
+    }
+
+    @Override
+    public int hashCode() {
+        int prime = 31;
+        int result = 1;
+        result = prime * result + Double.hashCode(x1);
+        result = prime * result + Double.hashCode(x2);
+        result = prime * result + Double.hashCode(x3);
+        result = prime * result + Double.hashCode(y1);
+        result = prime * result + Double.hashCode(y2);
+        result = prime * result + Double.hashCode(y3);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+
+        Triangle p = (Triangle) o;
+        return x1 == p.x1 && x2 == p.x2 && x3 == p.x3 && y1 == p.y1 && y2 == p.y2 && y3 == p.y3;
     }
 }

@@ -34,4 +34,30 @@ public class Square implements Shape {
     public double getPerimeter() {
         return sideLength * 4;
     }
+
+    @Override
+    public String toString() {
+        return "квадрат со стороной: " + sideLength;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) sideLength;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Square other = (Square) obj;
+        return sideLength == other.sideLength;
+    }
 }

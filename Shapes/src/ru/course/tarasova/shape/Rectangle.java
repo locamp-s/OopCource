@@ -44,4 +44,34 @@ public class Rectangle implements Shape {
     public double getPerimeter() {
         return 2 * (shorterSideLength + longerSideLength);
     }
+
+    @Override
+    public String toString() {
+        return "прямоугольник с со сторонами: " + shorterSideLength + "; " + longerSideLength;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Double.hashCode(shorterSideLength);
+        result = prime * result + Double.hashCode(longerSideLength);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Rectangle other = (Rectangle) obj;
+        if (shorterSideLength != other.shorterSideLength)
+            return false;
+
+        return longerSideLength == other.longerSideLength;
+    }
 }

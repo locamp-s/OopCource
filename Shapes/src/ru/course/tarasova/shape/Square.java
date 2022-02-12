@@ -50,12 +50,13 @@ public class Square implements Shape {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+
+        if ((obj == null) ||(getClass() != obj.getClass())){
             return false;
-        if (getClass() != obj.getClass())
-            return false;
+        }
 
         Square other = (Square) obj;
         return sideLength == other.sideLength;

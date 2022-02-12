@@ -1,77 +1,68 @@
 package ru.course.tarasova.shape;
 
 public class Rectangle implements Shape {
-    private double shorterSideLength;
-    private double longerSideLength;
+    private double width;
+    private double height;
 
     public Rectangle(double shorterSideLength, double longerSideLength) {
-        this.shorterSideLength = shorterSideLength;
-        this.longerSideLength = longerSideLength;
+        this.width = shorterSideLength;
+        this.height = longerSideLength;
     }
 
-    public double getShorterSideLength() {
-        return shorterSideLength;
-    }
-
-    public void setShorterSideLength(double shorterSideLength) {
-        this.shorterSideLength = shorterSideLength;
-    }
-
-    public double getLongerSideLength() {
-        return longerSideLength;
-    }
-
-    public void setLongerSideLength(double longerSideLength) {
-        this.longerSideLength = longerSideLength;
-    }
-
-    @Override
     public double getWidth() {
-        return longerSideLength;
+        return width;
     }
 
-    @Override
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
     public double getHeight() {
-        return shorterSideLength;
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
     @Override
     public double getArea() {
-        return shorterSideLength * longerSideLength;
+        return width * height;
     }
 
     @Override
     public double getPerimeter() {
-        return 2 * (shorterSideLength + longerSideLength);
+        return 2 * (width + height);
     }
 
     @Override
     public String toString() {
-        return "прямоугольник с со сторонами: " + shorterSideLength + "; " + longerSideLength;
+        return "прямоугольник с со сторонами: " + width + "; " + height;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + Double.hashCode(shorterSideLength);
-        result = prime * result + Double.hashCode(longerSideLength);
+        result = prime * result + Double.hashCode(width);
+        result = prime * result + Double.hashCode(height);
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+
+        if ((obj == null) ||(getClass() != obj.getClass())){
             return false;
-        if (getClass() != obj.getClass())
-            return false;
+        }
 
         Rectangle other = (Rectangle) obj;
-        if (shorterSideLength != other.shorterSideLength)
+        if (width != other.width)
             return false;
 
-        return longerSideLength == other.longerSideLength;
+        return height == other.height;
     }
 }

@@ -27,7 +27,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * (radius * radius);
+        return Math.PI * radius * radius;
     }
 
     @Override
@@ -50,12 +50,13 @@ public class Circle implements Shape {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+
+        if ((obj == null) ||(getClass() != obj.getClass())){
             return false;
-        if (getClass() != obj.getClass())
-            return false;
+        }
 
         Circle other = (Circle) obj;
         return radius == other.radius;

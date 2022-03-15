@@ -4,11 +4,12 @@ public class Rectangle implements Shape {
     private double width;
     private double height;
 
-    public Rectangle(double shorterSideLength, double longerSideLength) {
-        this.width = shorterSideLength;
-        this.height = longerSideLength;
+    public Rectangle(double width, double height) {
+        this.width = width;
+        this.height = height;
     }
 
+    @Override
     public double getWidth() {
         return width;
     }
@@ -17,6 +18,7 @@ public class Rectangle implements Shape {
         this.width = width;
     }
 
+    @Override
     public double getHeight() {
         return height;
     }
@@ -37,7 +39,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "прямоугольник с со сторонами: " + width + "; " + height;
+        return "прямоугольник с шириной " + width + " и высотой " + height;
     }
 
     @Override

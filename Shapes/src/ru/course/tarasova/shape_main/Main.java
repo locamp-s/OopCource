@@ -6,20 +6,19 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    private static Shape getShapeWithMaxArea(Shape[] shapes) {
-        if (shapes.length == 0) {
-            return null;
+    private static Object getFigureWithMaxArea(Shape[] shapes) {
+        if (shapes.length == 0){
+            return "фигур в массиве нет!";
         }
 
         Arrays.sort(shapes, new AreaComparator());
         return shapes[0];
     }
 
-    private static Shape getShapeWithSecondMaxPerimeter(Shape[] shapes) {
-        if (shapes.length <=1) {
-            return null;
+    private static Object getFigureWithSecondMaxPerimeter(Shape[] shapes) {
+        if (shapes.length == 0){
+            return "фигур в массиве нет!";
         }
-
         Arrays.sort(shapes, new PerimeterComparator());
         return shapes[1];
     }
@@ -33,11 +32,11 @@ public class Main {
                 new Rectangle(8, 10),
                 new Rectangle(6, 15),
                 new Triangle(-2, 0, 1, 4, 4, -2),
-                new Triangle(-4, 5, -3, 3, -1, 3)
+                new Triangle(-4, 5, -3, 3, -1, 3),
         };
 
-        System.out.println("Фигура с максимальной площадью - " + getShapeWithMaxArea(shapes));
-        System.out.println("Фигура со вторым по величине периметром - " + getShapeWithSecondMaxPerimeter(shapes));
+        System.out.println("Фигура с максимальной площадью - " + getFigureWithMaxArea(shapes));
+        System.out.println("Фигура со вторым по величине периметром - " + getFigureWithSecondMaxPerimeter(shapes));
 
         System.out.println("___________________Сравним фигуры___________________");
 
